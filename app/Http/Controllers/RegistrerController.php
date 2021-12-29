@@ -29,4 +29,20 @@ class RegistrerController extends Controller{
         auth()->login($user);
         return redirect()->to('/');
     }
+
+    public function edit($id){
+        $users = User::find($id);
+
+        //dd($users);
+
+        return view('admin.edit', compact('users'));
+    }
+
+    public function destroy($id){
+        $users = User::find($id);
+
+        $users->delete();
+
+        return redirect()->route('admin.index');
+    }
 }

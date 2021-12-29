@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function index(){
-        return 'Admin';
+    public function create(){
+        $users = User::all();
+
+        return view('admin.crud', compact('users'));
     }
 }

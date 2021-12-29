@@ -31,6 +31,8 @@ Route::get('/logout', [SessionsController::class, 'flush'])
     ->middleware('auth')
     ->name('login.flush');
 
-Route::get('/admin', [AdminController::class, 'index'])
+Route::get('/admin', [AdminController::class, 'create'])
     ->middleware('auth.admin')
     ->name('admin.index');
+
+Route::resource('users', RegistrerController::class);

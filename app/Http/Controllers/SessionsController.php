@@ -33,6 +33,10 @@ class SessionsController extends Controller{
 
         $r = $request->session()->flush();
 
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
         return redirect()->to('/');
     }
 }
