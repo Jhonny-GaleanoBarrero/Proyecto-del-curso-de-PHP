@@ -36,8 +36,9 @@
 
             @error('message')
             <p class="border border-red-500 rounded-md bg-red-100 w-full
-                text-red-600 p-2 my-2">
-                * Error
+                text-red-600 p-2 my-2"
+            >
+                *{{$message}}
             </p>
             @enderror
 

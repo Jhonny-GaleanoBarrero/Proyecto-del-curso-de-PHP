@@ -12,6 +12,12 @@ class RegistrerController extends Controller{
     }
 
     public function store(Request $request){
+        $this->validate(request(),[
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed'
+        ]);
+
         $user = new User();
 
         $user->name = $request->name;

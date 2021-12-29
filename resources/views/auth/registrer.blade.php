@@ -26,6 +26,14 @@
              name="name"
             >
 
+            @error('name')
+            <p class="border border-red-500 rounded-md bg-red-100 w-full
+                text-red-600 p-2 my-2"
+            >
+                *{{$message}}
+            </p>
+            @enderror
+
             <input type="email"
              class="border border-gray
              rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2
@@ -35,6 +43,14 @@
              name="email"
             >
 
+            @error('email')
+            <p class="border border-red-500 rounded-md bg-red-100 w-full
+                text-red-600 p-2 my-2"
+            >
+                *{{$message}}
+            </p>
+            @enderror
+
             <input type="password"
              class="border border-gray
              rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2
@@ -43,6 +59,14 @@
              id="password"
              name="password"
             >
+
+            @error('password')
+            <p class="border border-red-500 rounded-md bg-red-100 w-full
+                text-red-600 p-2 my-2"
+            >
+                *{{$message}}
+            </p>
+            @enderror
 
             <input type="password" class="border border-gray
              rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2

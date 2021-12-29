@@ -1,10 +1,9 @@
 <?php
 
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegistrerController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 
 Route::get('/', function(){
@@ -12,32 +11,26 @@ Route::get('/', function(){
 });
 
 Route::get('/registrer', [RegistrerController::class, 'create'])
-->name('registrer.index');
+    ->middleware('guest')
+    ->name('registrer.index');
+
 Route::post('/registrer', [RegistrerController::class, 'store'])
-->name('registrer.store');
+    ->name('registrer.store');
 
 
 
 Route::get('/login', [SessionsController::class, 'create'])
-->name('login.index');
+    ->middleware('guest')
+    ->name('login.index');
 
 Route::post('/login', [SessionsController::class, 'store'])
-->name('login.store');
+    ->name('login.store');
 
 
 Route::get('/logout', [SessionsController::class, 'flush'])
-->name('login.flush');
-/*Route::get('/logout', [SessionsController::class, 'flush'])
-->name('login.destroy');*/
+    ->middleware('auth')
+    ->name('login.flush');
 
-
-
-/*Route::get('/', HomeController::class);
-
-Route::get('/user', [UserController::class, 'showUsers']);
-
-Route::post('/user/create', [UserController::class, 'createUser'])->name('createUser');
-
-Route::post('/user/crear', [UserController::class, 'store'])->name('createUser.store');
-
-Route::get('users/home', [UserController::class, 'home'])->name('createUser.home');*/
+Route::get('/admin', [AdminController::class, 'index'])
+    ->middleware('auth.admin')
+    ->name('admin.index');
